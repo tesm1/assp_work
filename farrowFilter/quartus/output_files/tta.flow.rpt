@@ -1,0 +1,188 @@
+Flow report for tta
+Mon Jan 20 19:08:49 2025
+Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. EDA Netlist Writer Summary
+  2. Legal Notice
+  3. Flow Summary
+  4. Flow Settings
+  5. Flow Non-Default Global Settings
+  6. Flow Elapsed Time
+  7. Flow OS Summary
+  8. Flow Log
+  9. Flow Messages
+ 10. Flow Suppressed Messages
+
+
+
++-------------------------------------------------------------------+
+; EDA Netlist Writer Summary                                        ;
++---------------------------+---------------------------------------+
+; EDA Netlist Writer Status ; Successful - Mon Jan 20 19:08:49 2025 ;
+; Revision Name             ; tta                                   ;
+; Top-level Entity Name     ; tta_farrowV3                          ;
+; Family                    ; Cyclone III                           ;
+; Simulation Files Creation ; Successful                            ;
++---------------------------+---------------------------------------+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Flow Summary                                                                    ;
++------------------------------------+--------------------------------------------+
+; Flow Status                        ; Successful - Mon Jan 20 19:08:49 2025      ;
+; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; tta                                        ;
+; Top-level Entity Name              ; tta_farrowV3                               ;
+; Family                             ; Cyclone III                                ;
+; Device                             ; EP3C25F324C6                               ;
+; Timing Models                      ; Final                                      ;
+; Total logic elements               ; 4,283 / 24,624 ( 17 % )                    ;
+;     Total combinational functions  ; 3,255 / 24,624 ( 13 % )                    ;
+;     Dedicated logic registers      ; 2,550 / 24,624 ( 10 % )                    ;
+; Total registers                    ; 2550                                       ;
+; Total pins                         ; 6 / 216 ( 3 % )                            ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 321,536 / 608,256 ( 53 % )                 ;
+; Embedded Multiplier 9-bit elements ; 2 / 132 ( 2 % )                            ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                              ;
++------------------------------------+--------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 01/20/2025 19:02:01 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; tta                 ;
++-------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                                                                                                                                                                                                                                  ;
++---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+------------------+
+; Assignment Name                                   ; Value                                                                                                                                                                                                                                                                                                       ; Default Value ; Entity Name  ; Section Id       ;
++---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+------------------+
+; COMPILER_SIGNATURE_ID                             ; 8796752451041.173739252115862                                                                                                                                                                                                                                                                               ; --            ; --           ; --               ;
+; EDA_DESIGN_INSTANCE_NAME                          ; testbench/power_tb                                                                                                                                                                                                                                                                                          ; --            ; --           ; testbench        ;
+; EDA_GENERATE_GATE_LEVEL_SIMULATION_COMMAND_SCRIPT ; On                                                                                                                                                                                                                                                                                                          ; --            ; --           ; eda_simulation   ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH              ; testbench                                                                                                                                                                                                                                                                                                   ; --            ; --           ; eda_simulation   ;
+; EDA_OUTPUT_DATA_FORMAT                            ; Vhdl                                                                                                                                                                                                                                                                                                        ; --            ; --           ; eda_simulation   ;
+; EDA_RUN_TOOL_AUTOMATICALLY                        ; Off                                                                                                                                                                                                                                                                                                         ; --            ; --           ; eda_simulation   ;
+; EDA_SIMULATION_TOOL                               ; ModelSim-Altera (VHDL)                                                                                                                                                                                                                                                                                      ; <None>        ; --           ; --               ;
+; EDA_TEST_BENCH_ENABLE_STATUS                      ; TEST_BENCH_MODE                                                                                                                                                                                                                                                                                             ; --            ; --           ; eda_simulation   ;
+; EDA_TEST_BENCH_FILE                               ; ../../../testbench/clkgen.vhdl                                                                                                                                                                                                                                                                              ; --            ; --           ; testbench        ;
+; EDA_TEST_BENCH_FILE                               ; ../../../testbench/testbench.vhdl                                                                                                                                                                                                                                                                           ; --            ; --           ; testbench        ;
+; EDA_TEST_BENCH_MODULE_NAME                        ; testbench                                                                                                                                                                                                                                                                                                   ; --            ; --           ; testbench        ;
+; EDA_TEST_BENCH_NAME                               ; testbench                                                                                                                                                                                                                                                                                                   ; --            ; --           ; eda_simulation   ;
+; EDA_TEST_BENCH_RUN_SIM_FOR                        ; 30 us                                                                                                                                                                                                                                                                                                       ; --            ; --           ; testbench        ;
+; ENABLE_SIGNALTAP                                  ; On                                                                                                                                                                                                                                                                                                          ; --            ; --           ; --               ;
+; IP_TOOL_NAME                                      ; ROM: 1-PORT                                                                                                                                                                                                                                                                                                 ; --            ; --           ; --               ;
+; IP_TOOL_NAME                                      ; RAM: 1-PORT                                                                                                                                                                                                                                                                                                 ; --            ; --           ; --               ;
+; IP_TOOL_VERSION                                   ; 13.1                                                                                                                                                                                                                                                                                                        ; --            ; --           ; --               ;
+; IP_TOOL_VERSION                                   ; 13.1                                                                                                                                                                                                                                                                                                        ; --            ; --           ; --               ;
+; MAX_CORE_JUNCTION_TEMP                            ; 85                                                                                                                                                                                                                                                                                                          ; --            ; --           ; --               ;
+; MIN_CORE_JUNCTION_TEMP                            ; 0                                                                                                                                                                                                                                                                                                           ; --            ; --           ; --               ;
+; MISC_FILE                                         ; instrom.bsf                                                                                                                                                                                                                                                                                                 ; --            ; --           ; --               ;
+; MISC_FILE                                         ; instrom.cmp                                                                                                                                                                                                                                                                                                 ; --            ; --           ; --               ;
+; MISC_FILE                                         ; dataram.bsf                                                                                                                                                                                                                                                                                                 ; --            ; --           ; --               ;
+; MISC_FILE                                         ; dataram.cmp                                                                                                                                                                                                                                                                                                 ; --            ; --           ; --               ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE                       ; 1.2V                                                                                                                                                                                                                                                                                                        ; --            ; --           ; --               ;
+; PARTITION_COLOR                                   ; 16764057                                                                                                                                                                                                                                                                                                    ; --            ; tta_farrowV3 ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL               ; PLACEMENT_AND_ROUTING                                                                                                                                                                                                                                                                                       ; --            ; tta_farrowV3 ; Top              ;
+; PARTITION_NETLIST_TYPE                            ; SOURCE                                                                                                                                                                                                                                                                                                      ; --            ; tta_farrowV3 ; Top              ;
+; POWER_BOARD_THERMAL_MODEL                         ; None (CONSERVATIVE)                                                                                                                                                                                                                                                                                         ; --            ; --           ; --               ;
+; POWER_PRESET_COOLING_SOLUTION                     ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                                                                                                                                                                                                                                       ; --            ; --           ; --               ;
+; PROJECT_OUTPUT_DIRECTORY                          ; output_files                                                                                                                                                                                                                                                                                                ; --            ; --           ; --               ;
+; SLD_FILE                                          ; db/stp1_auto_stripped.stp                                                                                                                                                                                                                                                                                   ; --            ; --           ; --               ;
+; SLD_NODE_CREATOR_ID                               ; 110                                                                                                                                                                                                                                                                                                         ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_ENTITY_NAME                              ; sld_signaltap                                                                                                                                                                                                                                                                                               ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_RAM_BLOCK_TYPE=AUTO                                                                                                                                                                                                                                                                                     ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_NODE_INFO=805334528                                                                                                                                                                                                                                                                                     ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_POWER_UP_TRIGGER=0                                                                                                                                                                                                                                                                                      ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0                                                                                                                                                                                                                                                               ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_SEGMENT_SIZE=256                                                                                                                                                                                                                                                                                        ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_ATTRIBUTE_MEM_MODE=OFF                                                                                                                                                                                                                                                                                  ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_STATE_FLOW_USE_GENERATED=0                                                                                                                                                                                                                                                                              ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_STATE_BITS=11                                                                                                                                                                                                                                                                                           ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_BUFFER_FULL_STOP=1                                                                                                                                                                                                                                                                                      ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_CURRENT_RESOURCE_WIDTH=1                                                                                                                                                                                                                                                                                ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_TRIGGER_LEVEL=1                                                                                                                                                                                                                                                                                         ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_SAMPLE_DEPTH=256                                                                                                                                                                                                                                                                                        ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_TRIGGER_IN_ENABLED=1                                                                                                                                                                                                                                                                                    ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_ADVANCED_TRIGGER_ENTITY=basic,1,                                                                                                                                                                                                                                                                        ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_TRIGGER_LEVEL_PIPELINE=1                                                                                                                                                                                                                                                                                ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_ENABLE_ADVANCED_TRIGGER=0                                                                                                                                                                                                                                                                               ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_DATA_BITS=86                                                                                                                                                                                                                                                                                            ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_TRIGGER_BITS=86                                                                                                                                                                                                                                                                                         ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_INVERSION_MASK=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_INVERSION_MASK_LENGTH=280                                                                                                                                                                                                                                                                               ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_NODE_CRC_LOWORD=22487                                                                                                                                                                                                                                                                                   ; --            ; --           ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT                     ; SLD_NODE_CRC_HIWORD=46218                                                                                                                                                                                                                                                                                   ; --            ; --           ; auto_signaltap_0 ;
+; TOP_LEVEL_ENTITY                                  ; tta_farrowV3                                                                                                                                                                                                                                                                                                ; tta           ; --           ; --               ;
+; USE_SIGNALTAP_FILE                                ; stp1.stp                                                                                                                                                                                                                                                                                                    ; --            ; --           ; --               ;
++---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+--------------+------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:01:09     ; 1.0                     ; 445 MB              ; 00:01:04                           ;
+; Fitter                    ; 00:01:22     ; 1.0                     ; 634 MB              ; 00:01:18                           ;
+; Assembler                 ; 00:00:07     ; 1.0                     ; 380 MB              ; 00:00:07                           ;
+; TimeQuest Timing Analyzer ; 00:00:17     ; 1.0                     ; 426 MB              ; 00:00:16                           ;
+; EDA Netlist Writer        ; 00:01:06     ; 1.0                     ; 393 MB              ; 00:00:29                           ;
+; Total                     ; 00:04:01     ; --                      ; --                  ; 00:03:14                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                             ;
++---------------------------+------------------+----------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
++---------------------------+------------------+----------------+------------+----------------+
+; Analysis & Synthesis      ; ubuntu           ; Ubuntu 14.04.1 ; 14         ; i686           ;
+; Fitter                    ; ubuntu           ; Ubuntu 14.04.1 ; 14         ; i686           ;
+; Assembler                 ; ubuntu           ; Ubuntu 14.04.1 ; 14         ; i686           ;
+; TimeQuest Timing Analyzer ; ubuntu           ; Ubuntu 14.04.1 ; 14         ; i686           ;
+; EDA Netlist Writer        ; ubuntu           ; Ubuntu 14.04.1 ; 14         ; i686           ;
++---------------------------+------------------+----------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off tta -c tta
+quartus_fit --read_settings_files=off --write_settings_files=off tta -c tta
+quartus_asm --read_settings_files=off --write_settings_files=off tta -c tta
+quartus_sta tta -c tta
+quartus_eda --read_settings_files=off --write_settings_files=off tta -c tta
+
+
+

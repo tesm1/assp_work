@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<adf-implementation>
+
+  <ic-decoder-plugin>
+    <name>DefaultICDecoder</name>
+    <file>/usr/local/share/tce/icdecoder_plugins/base/DefaultICDecoderPlugin.so</file>
+  </ic-decoder-plugin>
+
+  <fu name="add_1">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>4</fu-id>
+  </fu>
+
+  <fu name="add_0">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>4</fu-id>
+  </fu>
+
+  <fu name="ALU">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>375</fu-id>
+  </fu>
+
+  <fu name="stream_out">
+    <hdb-file>/usr/local/share/tce/hdb/fifo_stream.hdb</hdb-file>
+    <fu-id>12</fu-id>
+  </fu>
+
+  <fu name="stream_in">
+    <hdb-file>/usr/local/share/tce/hdb/fifo_stream.hdb</hdb-file>
+    <fu-id>17</fu-id>
+  </fu>
+
+  <fu name="LSU">
+    <hdb-file>/usr/local/share/tce/hdb/stratixII.hdb</hdb-file>
+    <fu-id>2</fu-id>
+  </fu>
+
+  <fu name="MAC">
+    <hdb-file>/home/user/delet/shite/customOP/mymac.hdb</hdb-file>
+    <fu-id>3</fu-id>
+  </fu>
+
+  <rf name="RF_1">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>958</rf-id>
+  </rf>
+
+  <rf name="RF_2">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>958</rf-id>
+  </rf>
+
+  <rf name="BOOL">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+</adf-implementation>

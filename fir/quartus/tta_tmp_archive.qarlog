@@ -1,0 +1,72 @@
+Quartus II Archive log --	/home/user/work/fir/quartus/tta_tmp_archive.qarlog
+
+Archive:	/home/user/work/fir/quartus/tta_tmp_archive.qar
+Date:		Sun Jan 26 16:27:47 2025
+Quartus II 32-bit		13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+	=========== Files Selected: ===========
+/home/user/work/fir/hdl_filesV2/gcu_ic/decoder.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/gcu_opcodes_pkg.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/ic.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/idecompressor.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/ifetch.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/input_socket_8.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/output_socket_1_1.vhdl
+/home/user/work/fir/hdl_filesV2/gcu_ic/output_socket_8_1.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/add.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/add_and_eq_gt_gtu_ior_shl_shr_shru_sub_sxhw_sxqw_xor.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/fifo_stream_in_1.vhd
+/home/user/work/fir/hdl_filesV2/vhdl/fifo_stream_out_1.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/ldh_ldhu_ldq_ldqu_ldw_sth_stq_stw.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/mul.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/myProssu.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/myProssu_globals_pkg.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/myProssu_imem_mau_pkg.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/myProssu_params_pkg.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/rf_1wr_1rd_always_1_guarded_0.vhd
+/home/user/work/fir/hdl_filesV2/vhdl/rf_1wr_1rd_always_1_guarded_1.vhd
+/home/user/work/fir/hdl_filesV2/vhdl/tce_util_pkg.vhdl
+/home/user/work/fir/hdl_filesV2/vhdl/util_pkg.vhdl
+/home/user/work/fir/program.mif
+/home/user/work/fir/program_data.mif
+/home/user/work/fir/quartus/addr_gen.v
+/home/user/work/fir/quartus/assignment_defaults.qdf
+/home/user/work/fir/quartus/checksum.v
+/home/user/work/fir/quartus/data_src1.v
+/home/user/work/fir/quartus/data_src2.v
+/home/user/work/fir/quartus/dataram.bsf
+/home/user/work/fir/quartus/dataram.cmp
+/home/user/work/fir/quartus/dataram.qip
+/home/user/work/fir/quartus/dataram.vhd
+/home/user/work/fir/quartus/db/stp1_auto_stripped.stp
+/home/user/work/fir/quartus/db/tta.cmp.hdb
+/home/user/work/fir/quartus/db/tta.db_info
+/home/user/work/fir/quartus/fiforeader.v
+/home/user/work/fir/quartus/hdl_filesV3/vhdl/tta_fir.bdf
+/home/user/work/fir/quartus/incremental_db/compiled_partitions/tta.db_info
+/home/user/work/fir/quartus/instrom.bsf
+/home/user/work/fir/quartus/instrom.cmp
+/home/user/work/fir/quartus/instrom.qip
+/home/user/work/fir/quartus/instrom.vhd
+/home/user/work/fir/quartus/output_files/Chain1.cdf
+/home/user/work/fir/quartus/pc_init.v
+/home/user/work/fir/quartus/start_trigger.v
+/home/user/work/fir/quartus/stp1.stp
+/home/user/work/fir/quartus/stream_source_1.bdf
+/home/user/work/fir/quartus/stream_source_2.bdf
+/home/user/work/fir/quartus/tiny_fifo.vhd
+/home/user/work/fir/quartus/tta.qpf
+/home/user/work/fir/quartus/tta.qsf
+/home/user/work/fir/quartus/tta.sdc
+/home/user/work/fir/quartus/tta_stream_1_in.mif
+/home/user/work/fir/quartus/usedw_to_status.v
+	======= Total: 55 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun Jan 26 16:27:51 2025
+Source archive file:	/home/user/work/fir/quartus/tta_tmp_archive.qar
+Archive was extracted into	/home/user/work/fir/noclip/quartus/
+		 - successfully.

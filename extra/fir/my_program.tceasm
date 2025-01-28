@@ -1,0 +1,190 @@
+CODE 0 ;
+
+:procedure _start;
+_start:
+	..., ..., copy_header -> gcu.pc.call, gcu.ra -> LSU.in2, 4 -> ALU.in2, 248 -> ALU.in1t.sub ;	# @0
+	..., ..., ..., ..., ALU.out1 -> LSU.in1t.stw, ALU.out1 -> RF_1.0 ;	# @1
+	..., ..., ..., ..., ..., ... ;	# @2
+	..., ..., ..., ..., ..., ... ;	# @3
+	..., ..., ..., ..., ..., filterloop -> gcu.pc.call ;	# @4
+	..., ..., ..., ..., ..., ... ;	# @5
+	..., ..., ..., ..., ..., ... ;	# @6
+	..., ..., ..., ..., ..., ... ;	# @7
+	..., ..., ..., ..., ..., _exit -> gcu.pc.call ;	# @8
+	..., ..., ..., ..., ..., ... ;	# @9
+	..., ..., ..., ..., ..., ... ;	# @10
+	..., ..., ..., ..., ..., ... ;	# @11
+
+
+:procedure _exit;
+_exit:
+	..., ..., ..., ..., ..., 4 -> RF_1.3 ;	# @12
+	..., ..., ..., 13 -> gcu.pc.jump, RF_1.3 -> LSU.in1t.stw, 0 -> LSU.in2 ;	# @13
+	..., ..., ..., ..., ..., ... ;	# @14
+	..., ..., ..., ..., ..., ... ;	# @15
+	..., ..., ..., ..., ..., ... ;	# @16
+
+
+
+:procedure filterloop;
+filterloop:
+
+	# ------------------------- init stuff ------------------------- #
+
+
+	# @17
+	0 -> stream_in.in1t.fifo_u8_stream_in, # 1: input
+	# init constant FU registers
+	37 -> mul_0.in2,
+	109 -> mul_1.in2,
+	...,
+	...,
+	... ;
+
+
+	# @18
+	stream_in.out2 -> ALU.in1t.sub, 128 -> ALU.in2, # 1: shift by -128
+	0 -> stream_in.in1t.fifo_u8_stream_in, 			# 2: input
+	...,
+	...,
+	... ;
+
+
+	# @19
+	ALU.out1 -> mul_0.in1t.mul, 					# 1: calculate 37a
+	ALU.out1 -> mul_1.in1t.mul,						# 2: calculate 109a
+	stream_in.out1 -> ALU.in1t.gt, 2 -> ALU.in2, 	# check for non empty input stream
+	...,
+	... ;
+
+
+	# @20
+	stream_in.out2 -> ALU.in1t.sub, 128 -> ALU.in2, # 2: shift by -128
+	ALU.out1 -> BOOL.0, 							# check for non empty input stream
+	0 -> add_1.in1t.add, 0 -> add_1.in2, 			# set value for the loop (sample 2)
+	0 -> RF_2.2 ;
+
+
+	# @21
+	8 -> ALU.in1t.shr, mul_0.out1 -> ALU.in2, 	# 1: scale by 8
+	ALU.out1 -> mul_0.in1t.mul, 				# 2: calculate 37b (STOP)
+	mul_0.out1 -> RF_2.1,						# store 37a
+	ALU.out1 -> RF_1.0,							# store X[N]
+	... ;
+
+
+
+	# @22
+	ALU.out1 -> add_0.in1t.add, 128 -> add_0.in2, 	# 1: shift back by +128 (STOP)
+	stream_in.out1 -> ALU.in1t.gt, 1 -> ALU.in2, 	# check for non empty input stream
+	...,
+	!BOOL.0 35 -> gcu.pc.jump ;
+
+	..., ..., ..., ..., ..., ... ;	# @23
+	..., ..., ..., ..., ..., ... ;	# @24
+	..., ..., ..., ..., ..., ... ;	# @25
+
+
+
+
+	# ------------------------- main loop ------------------------- #
+
+	# In this loop there are two different inputs at any given time in different part of their cycle. when input 2 exits input 1 becomes input 2.
+	# e.g. in the first cycle:
+	# one gets returned to out
+	# second gets shifted by 8
+
+
+	# @26
+	0 -> stream_in.in1t.fifo_u8_stream_in, 					# jump 0: get new sample
+	mul_0.out1 -> add_0.in1t.add, mul_1.out1 -> add_0.in2, 	# jump 1: sum K0 * X[N] + K1 * X[N-1]
+	add_0.out1 -> stream_out.in1t.fifo_u8_stream_out, 		# jump 2: invoke output stream!
+	ALU.out1 -> BOOL.0, 									# is input stream empty?
+	?BOOL.0 26 -> gcu.pc.jump ; 							# start new jump (4 cycles)
+
+
+	# @27
+	stream_in.out2 -> ALU.in1t.sub, 128 -> ALU.in2,			# jump 0: shift by -128
+	RF_2.2 -> add_1.in2, mul_1.out1 -> add_1.in1t.add,		# jump 0: 37 * X[N-2] + 109 * X[N-1] # sample 2 alkaa eli 109a + 0
+	add_0.out1 -> add_0.in1t.add, add_1.out1 -> add_0.in2 ; # jump 1: 2-coeff-mul-result-sum + old sum
+
+
+	# @28
+	ALU.out1 -> mul_0.in1t.mul, RF_1.0 -> mul_1.in1t.mul, 	# jump 0: K0 * X[N] and K1 * X[N-1]
+	add_0.out1 -> ALU.in2, 8 -> ALU.in1t.shr, 				# jump 1: scale by 8
+	ALU.out1 -> RF_1.0,										# store X[N]
+	RF_2.1 -> RF_2.2 ;										# shfit old sample * 37
+
+
+	# @29
+	ALU.out1 -> add_0.in1t.add, 128 -> add_0.in2,	# jump 1: shift back by +128
+	stream_in.out1 -> ALU.in1t.gt, 0 -> ALU.in2, 	# is input stream empty?
+	mul_0.out1 -> RF_2.1,							# store X[N] * 37
+	... ;
+
+
+
+	# ------------------------- last 3 zero padd ------------------------- #
+
+	# @30
+	RF_1.3 -> ALU.in1t.add, 1 -> ALU.in2,	# counter
+	...,
+	...,
+	...,
+	... ;
+
+
+	# @31
+	ALU.out1 -> ALU.in1t.gt, 3 -> ALU.in2, 	# check counter
+	ALU.out1 -> RF_1.3,						# counter
+	...,
+	...,
+	!BOOL.0 26 -> gcu.pc.jump ;
+
+	..., ..., ..., ..., ..., ... ;	# @32
+	..., ..., ..., ..., ..., ... ;	# @33
+	..., ..., ..., ..., ..., ... ;	# @34
+
+
+
+	# return
+	..., ..., ..., ..., ..., gcu.ra -> gcu.pc.jump ;	# @35
+	..., ..., ..., ..., ..., ... ;	# @36
+	..., ..., ..., ..., ..., ... ;	# @37
+	..., ..., ..., ..., ..., ... ;	# @38
+
+
+:procedure copy_header;
+copy_header:
+	..., ..., ..., ..., ..., 0 -> RF_2.1 ;	# @39
+	..., RF_2.1 -> add_0.in2, ..., ..., 11 -> add_0.in1t.add, 0 -> stream_in.in1t.fifo_u8_stream_in ;	# @40
+	..., ..., 0 -> stream_in.in1t.fifo_u8_stream_in, 255 -> ALU.in1t.and, stream_in.out1 -> RF_2.2, stream_in.out2 -> ALU.in2 ;	# @41
+	..., 0 -> stream_in.in1t.fifo_u8_stream_in, stream_in.out1 -> RF_2.2, 255 -> ALU.in1t.and, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @42
+	..., 0 -> stream_in.in1t.fifo_u8_stream_in, stream_in.out1 -> RF_2.2, 255 -> ALU.in1t.and, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @43
+	..., 0 -> stream_in.in1t.fifo_u8_stream_in, stream_in.out1 -> RF_2.2, 255 -> ALU.in1t.and, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @44
+	..., 255 -> ALU.in1t.and, stream_in.out1 -> RF_2.2, 0 -> stream_in.in1t.fifo_u8_stream_in, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @45
+	..., 0 -> stream_in.in1t.fifo_u8_stream_in, 255 -> ALU.in1t.and, stream_in.out1 -> RF_2.2, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @46
+	..., stream_in.out1 -> RF_2.2, 0 -> stream_in.in1t.fifo_u8_stream_in, 255 -> ALU.in1t.and, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @47
+	..., 255 -> ALU.in1t.and, stream_in.out1 -> RF_2.2, 0 -> stream_in.in1t.fifo_u8_stream_in, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @48
+	..., 0 -> stream_in.in1t.fifo_u8_stream_in, 255 -> ALU.in1t.and, stream_in.out1 -> RF_2.2, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @49
+	..., stream_in.out1 -> RF_2.2, 0 -> stream_in.in1t.fifo_u8_stream_in, 255 -> ALU.in1t.and, stream_in.out2 -> ALU.in2, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @50
+	..., stream_in.out2 -> ALU.in2, 255 -> ALU.in1t.and, ..., add_0.out1 -> RF_2.1, ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @51
+	..., add_0.out1 -> ALU.in2, 44 -> ALU.in1t.eq, ..., ALU.out1 -> stream_out.in1t.fifo_u8_stream_out, stream_in.out1 -> RF_2.2 ;	# @52
+	..., ..., ..., ..., ..., ALU.out1 -> BOOL.0 ;	# @53
+	..., !BOOL.0 11 -> add_0.in1t.add, !BOOL.0 RF_2.1 -> add_0.in2, ..., !BOOL.0 0 -> stream_in.in1t.fifo_u8_stream_in, !BOOL.0 44 -> gcu.pc.jump ;	# @54
+	..., !BOOL.0 255 -> ALU.in1t.and, !BOOL.0 0 -> stream_in.in1t.fifo_u8_stream_in, ..., !BOOL.0 stream_in.out2 -> ALU.in2, !BOOL.0 stream_in.out1 -> RF_2.2 ;	# @55
+	..., !BOOL.0 stream_in.out2 -> ALU.in2, !BOOL.0 255 -> ALU.in1t.and, !BOOL.0 0 -> stream_in.in1t.fifo_u8_stream_in, !BOOL.0 stream_in.out1 -> RF_2.2, !BOOL.0 ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @56
+	..., !BOOL.0 stream_in.out2 -> ALU.in2, !BOOL.0 255 -> ALU.in1t.and, !BOOL.0 0 -> stream_in.in1t.fifo_u8_stream_in, !BOOL.0 stream_in.out1 -> RF_2.2, !BOOL.0 ALU.out1 -> stream_out.in1t.fifo_u8_stream_out ;	# @57
+	..., ..., ..., ..., ..., gcu.ra -> gcu.pc.jump ;	# @58
+	..., ..., ..., ..., ..., ... ;	# @59
+	..., ..., ..., ..., ..., ... ;	# @60
+	..., ..., ..., ..., ..., ... ;	# @61
+
+
+
+
+
+DATA data 4 ;
+
+DA 5 ;
+
