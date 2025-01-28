@@ -2,7 +2,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/tesm1/lab_work.git
+git clone https://github.com/tesm1/assp_work.git
 ```
 
 
